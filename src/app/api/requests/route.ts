@@ -42,6 +42,19 @@ export async function POST(request: Request) {
   }
 
   try {
+    if (!db) {
+      console.info("lead_received_without_db", { name, phone, email, service });
+      return NextResponse.json(
+        {
+          ok: true,
+          id: `lead-${Date.now()}`,
+          receivedAt: new Date().toISOString(),
+          message: "Thank you. Your request has been received.",
+        },
+        { status: 201 },
+      );
+    }
+
     const [inserted] = await db
       .insert(serviceRequests)
       .values({
@@ -74,6 +87,10 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
+    if (!db) {
+      return NextResponse.json({ ok: true, count: 0, requests: [] });
+    }
+
     const rows = await db
       .select({
         id: serviceRequests.id,
