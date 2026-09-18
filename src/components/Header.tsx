@@ -115,23 +115,27 @@ export function Header() {
           className="overflow-hidden border-b border-[#cbd5e1] bg-[#e8ebed] text-[#1e293b] shadow-xs"
         >
           <div className="flex h-[46px] w-full items-stretch justify-between">
-            {/* Left Box: Crimson Red with Live Date/Time */}
-            <div className="flex items-center justify-center bg-[#c02f2d] px-4 sm:px-6 md:px-7 text-white font-extrabold text-[12px] sm:text-[13px] tracking-wide border-r-2 border-[#1e293b] shrink-0 select-none">
-              <span>
+            {/* Left Box: Crimson Red with Live Date/Time on Desktop, 24/7 Emergency on Mobile */}
+            <div className="flex items-center justify-center bg-[#c02f2d] px-3 sm:px-6 md:px-7 text-white font-extrabold text-[11px] sm:text-[13px] tracking-wide border-r-2 border-[#1e293b] shrink-0 select-none">
+              <span className="sm:hidden flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+                24/7 SERVICE
+              </span>
+              <span className="hidden sm:inline">
                 It&apos;s {timeString || "9/18/2026 10:31 PM"}, We&apos;re Here For You
               </span>
             </div>
 
             {/* Right Group / Center Items */}
-            <div className="flex flex-1 items-center justify-between gap-4 px-4 sm:px-8 xl:px-12">
+            <div className="flex flex-1 items-center justify-between gap-2 px-2.5 sm:px-8 xl:px-12 overflow-hidden">
               {/* Same Day Service + Phone */}
-              <div className="flex items-center gap-2 text-[12px] sm:text-[13px] whitespace-nowrap">
-                <span className="font-extrabold text-[#014485]">Same Day Service</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-[13px] whitespace-nowrap">
+                <span className="font-extrabold text-[#014485] hidden xs:inline sm:inline">Same Day:</span>
                 <a
                   href={business.phoneHref}
-                  className="inline-flex items-center gap-1.5 font-extrabold text-[#c02f2d] hover:underline transition-colors"
+                  className="inline-flex items-center gap-1 sm:gap-1.5 font-extrabold text-[#c02f2d] hover:underline transition-colors"
                 >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-[#014485] shrink-0">
+                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-[#014485] shrink-0">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z" />
                   </svg>
                   <span>{business.phone}</span>
@@ -139,7 +143,7 @@ export function Header() {
               </div>
 
               {/* Five Stars Rating with Pixel-Perfect SVG Stars */}
-              <div className="hidden md:flex items-center gap-2 font-extrabold text-[#c02f2d] text-[12px] sm:text-[13px] tracking-wide whitespace-nowrap">
+              <div className="hidden lg:flex items-center gap-2 font-extrabold text-[#c02f2d] text-[12px] sm:text-[13px] tracking-wide whitespace-nowrap">
                 <span>FIVE STARS RATED COMPANY</span>
                 <div className="flex items-center gap-0.5 text-[#eab308]">
                   {[...Array(5)].map((_, i) => (
@@ -150,8 +154,8 @@ export function Header() {
                 </div>
               </div>
 
-              {/* Social Media Icons (Replacing Locations We Service) */}
-              <div className="flex items-center gap-2 shrink-0">
+              {/* Social Media Icons */}
+              <div className="hidden sm:flex items-center gap-2 shrink-0">
                 <div className="flex items-center gap-1.5 text-[#014485]">
                   {socials.map((s) => (
                     <a
@@ -319,13 +323,28 @@ function MobileMenu({ onClose, reduce }: { onClose: () => void; reduce: boolean 
               >
                 <Link
                   href={item.href}
-                  className="flex items-baseline justify-between gap-4 py-4 font-display text-[26px] font-extrabold tracking-[-0.03em] text-white"
+                  onClick={onClose}
+                  className="flex items-baseline justify-between gap-4 py-4 font-display text-[24px] font-extrabold tracking-[-0.03em] text-white transition-colors hover:text-crimson-300"
                 >
                   {item.label}
                   <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-white/30">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </Link>
+                {"children" in item && item.children && (
+                  <div className="flex flex-wrap gap-2 pb-4 pl-1">
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.label}
+                        href={c.href}
+                        onClick={onClose}
+                        className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-bold tracking-wider text-white/80 uppercase transition-colors hover:border-crimson-300 hover:bg-crimson hover:text-white"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </motion.li>
             ))}
           </ul>

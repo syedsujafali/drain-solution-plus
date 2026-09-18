@@ -69,24 +69,22 @@ export function FooterCTA() {
 
           {/* Map on the left, Van beside the map */}
           <div className="flex items-center justify-center lg:col-span-6 lg:justify-end">
-            <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end xl:gap-8">
-              <Reveal delay={0.15} className="shrink-0">
+            <div className="flex flex-row items-end justify-center gap-3 sm:gap-6 xl:gap-8 w-full max-w-lg">
+              <div className="shrink-0">
                 <img
                   src={serviceArea.map}
                   alt="Map of the Northern New Jersey counties serviced by Drain Solutions Plus"
-                  className="h-auto w-[170px] drop-shadow-[0_28px_50px_rgba(0,0,0,0.55)] sm:w-[190px] xl:w-[220px]"
-                  loading="lazy"
+                  className="h-auto w-[110px] xs:w-[130px] sm:w-[180px] xl:w-[220px] object-contain drop-shadow-[0_28px_50px_rgba(0,0,0,0.55)]"
                 />
-              </Reveal>
+              </div>
 
-              <Reveal delay={0.22} className="shrink-0">
+              <div className="shrink-0">
                 <img
                   src={serviceArea.car}
                   alt="Drain Solutions Plus service van"
-                  className="h-auto w-[250px] max-w-full drop-shadow-[0_24px_40px_rgba(0,0,0,0.5)] sm:w-[290px] xl:w-[350px]"
-                  loading="lazy"
+                  className="h-auto w-[170px] xs:w-[200px] sm:w-[270px] xl:w-[340px] max-w-full object-contain drop-shadow-[0_24px_40px_rgba(0,0,0,0.5)]"
                 />
-              </Reveal>
+              </div>
             </div>
           </div>
         </div>

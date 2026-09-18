@@ -159,7 +159,7 @@ export const serviceArea = {
   ],
   countiesHeading: "We Service The Following Counties:",
   car: "/images/dsp/DSP-CAR.png",
-  map: "/images/dsp/DSP-MAP.png",
+  map: "/images/dsp/dsp-map.png",
 };
 
 export const servicesPage = {
@@ -390,7 +390,7 @@ export const images = {
   skew: "/images/dsp/skew-img.png",
   footerBg: "/images/dsp/footer-bg.jpg",
   car: "/images/dsp/DSP-CAR.png",
-  map: "/images/dsp/DSP-MAP.png",
+  map: "/images/dsp/dsp-map.png",
   bannerLogos: "/images/dsp/DSP-Internal-Pages-Banner-Logos.png",
   fiveStar: "/images/dsp/five-star-e1723402817228.png",
   contact: "/images/dsp/proj-16.jpg",

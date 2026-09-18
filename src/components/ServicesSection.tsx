@@ -75,7 +75,7 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
                         >
                           <span
                             className={`font-sans text-[10px] font-bold tracking-[0.2em] tabular-nums transition-colors duration-500 ${
-                              isActive ? "text-crimson-300 lg:text-white/50" : "text-navy/35"
+                              isActive ? "text-crimson lg:text-white/50" : "text-navy/35"
                             }`}
                           >
                             {s.index}
@@ -84,14 +84,14 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
                           <span className="min-w-0 flex-1">
                             <span
                               className={`block font-display text-[clamp(1.15rem,2.6vw,1.85rem)] font-extrabold tracking-[-0.035em] transition-[color,transform] duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                                isActive ? "text-white lg:translate-x-2" : "text-navy"
+                                isActive ? "text-navy lg:text-white lg:translate-x-2" : "text-navy"
                               }`}
                             >
                               {s.name}
                             </span>
                             <span
                               className={`mt-1.5 block overflow-hidden text-[10px] font-bold tracking-[0.2em] uppercase transition-colors duration-500 ${
-                                isActive ? "text-white/45" : "text-steel/70"
+                                isActive ? "text-crimson lg:text-white/50" : "text-steel/70"
                               }`}
                             >
                               {s.kicker}
@@ -100,8 +100,10 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
 
                           <span
                             className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-500 ${
-                              isActive
-                                ? "border-crimson-300/50 bg-crimson text-white lg:rotate-45"
+                              isOpen
+                                ? "rotate-45 border-crimson bg-crimson text-white"
+                                : isActive
+                                ? "border-crimson/50 text-crimson lg:border-white/40 lg:text-white"
                                 : "border-navy/20 text-navy"
                             }`}
                           >
